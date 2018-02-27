@@ -1,0 +1,48 @@
+<h1>Start</h1>
+<h2>Solufa</h2>
+<div>
+  <p>
+    Solufaは"Mithril.js"で記述するWeb3D/VRライブラリです。<br/>
+    Mithril.jsを扱えることを前提としています。<br/>
+    Mithril.jsの詳細は<a href="http://mithril.js.org/" target="_brank">公式サイト</a>をご覧ください。
+  </p>
+</div>
+
+<h2>Global Object</h2>
+<div>
+  <p>
+    <pre><code>window.Solufa === window.S; // true</code></pre>
+    "S"が他のライブラリと競合する場合はnoConflictを呼んでください。
+    <pre><code>Solufa.noConflict();
+// window.S !== window.Solufa;</code></pre>
+  </p>
+</div>
+
+<h2>Virtual DOM</h2>
+<div>
+  <p>
+    Mithril.jsとは競合しません。Solufaの名前空間に"m"関数が定義されています。
+    <pre><code>// window.m === undefined;
+var m = Solufa.m;</code></pre>
+    変数"m"が定義されているスコープ内でのみ<a href="https://github.com/insin/msx" target="_brank">MSXTransformer</a>を利用できます。
+    <pre><code>m.render( S.document.head, &lt;rdr init={{ frame: &quot;#solufa&quot;, antialias: true }}&gt;
+  &lt;vp cam=&quot;#cam&quot;/&gt;
+&lt;/rdr&gt; );</code></pre>
+      JavaScript
+      <pre><code>var myColor = "#f00";
+m.render( S.document.body, m( "scene", [
+  m( MyComponent, { color: myColor } )
+]) );</code></pre>
+  </p>
+</div>
+
+<h2>DOMContentLoaded</h2>
+<div>
+  <p>
+    <pre><code>S( function( m ) {
+  // m === Solufa.m;
+}, function() {
+  // disabled WebGL handling
+});</code></pre>
+  </p>
+</div>

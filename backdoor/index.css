@@ -1,0 +1,205 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
+
+.fb_iframe_widget > span {
+	vertical-align: baseline !important;
+}
+
+.sns > * {
+	margin: 0 10px;
+}
+
+body {
+	font-size: 16px;
+	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
+
+.sns {
+	margin-top: 40px;
+}
+
+.container {
+	max-width: 1000px;
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+}
+
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px 15px;
+	font-size: 120%;
+	color: #fff;
+	transition: .5s;
+}
+
+#header.scrolling {
+	background-color: rgba( 30, 30, 80, .8 );
+}
+
+#top {
+	background: center / cover url( img/back.jpg );
+	position: relative;
+	text-align: center;
+	color: #fff;
+}
+
+#top-blur {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba( 0, 0, 0, .3 );
+	background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.4) 100%);
+	background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.4) 100%);
+}
+
+#top-blur + div {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY( -50% );
+	-webkit-transform: translateY( -50% );
+	-moz-transform: translateY( -50% );
+	-ms-transform: translateY( -50% );
+	text-shadow: 1px 1px 2px rgba( 0, 0, 0, .7 );
+}
+
+#top h1 {
+	font-size: 600%;
+	margin-bottom: 20px;
+}
+
+#top h2 {
+	font-size: 200%;
+	font-weight: normal;
+}
+
+#playing_number {
+	position: absolute;
+	bottom: 30px;
+	width: 100%;
+	text-align: center;
+	font-size: 150%;
+}
+
+#playing_number > span {
+	font-size: 150%;
+	color: #ff0;
+	font-weight: bold;
+}
+
+#features > div {
+	width: 33.333%;
+	float: left;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 35px 25px;
+	font-size: 120%;
+	line-height: 1.6;
+}
+
+.mobile #features > div {
+	width: 100%;
+}
+
+#features h3 {
+	font-size: 150%;
+	margin-bottom: 15px;
+}
+
+#features img {
+	width: 100%;
+}
+
+#device {
+	background: center / cover url( img/back2.jpg );
+	text-align: center;
+  text-shadow: 1px 1px 1px #fff;
+	padding: 40px;
+}
+
+#device h3 {
+	font-size: 150%;
+	margin-bottom: 60px;
+}
+
+#device > .container {
+	padding-top: 40px;
+}
+
+#device > .container > div {
+	float: left;
+	width: 50%;
+	padding-top: 40%;
+	position: relative;
+}
+
+.mobile #device > .container > div {
+	width: 100%;
+	padding-top: 80%;
+}
+
+#device a {
+	position: absolute;
+	top: -30px;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	color: #000;
+	font-size: 180%;
+	padding-top: 15px;
+}
+
+#waiting {
+	position: absolute;
+	top: -30px;
+	width: 100%;
+	bottom: 0;
+	background: rgba( 0, 0, 0, .5 );
+}
+
+#waiting > span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+	-webkit-transform: translate( -50%, -50% );
+	-moz-transform: translate( -50%, -50% );
+	-ms-transform: translate( -50%, -50% );
+	color: #fff;
+	text-shadow: none;
+	font-size: 200%;
+}
+
+#pc {
+	background: center / contain url( img/pc.png ) no-repeat;
+}
+
+#mobile {
+	background: center / contain url( img/mobile.png ) no-repeat;
+}
+
+#vr {
+	background: center / 120% url( img/milbox.png ) no-repeat;
+}
+
+
+#footer {
+	clear: both;
+	padding: 25px 0;
+	text-align: center;
+	font-weight: bold;
+}

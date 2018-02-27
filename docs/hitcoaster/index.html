@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<meta property="og:url" content="http://unicoaster.net/" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="Hitofude Coaster | 指一本で軽快に駆け抜ける無限の世界"/>
+	<meta property="og:image" content="http://unicoaster.net/img/ogp.jpg"/>
+	<meta property="og:description" content="コースを書いて、かざすと走る！かぶると飛び出す！新感覚のウェブアプリ" />
+
+	<title>Hitofude Coaster | 指一本で軽快に駆け抜ける無限の世界</title>
+	<link rel="stylesheet" href="index.css?8">
+	<link rel="stylesheet" href="player.css?8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-75911296-1', 'auto');
+ ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+
+	<div id="app"></div>
+	<!--<input id="test" type="text" style="width:100%;display:block;position: fixed; top: 40px; left: 10px"/>-->
+
+
+	<script src="libs/mithril.min.js"></script>
+	<script src="js/player.js?14"></script>
+	<script src="js/index.js?14"></script>
+	<script id="goml" type="text/goml:waiting">
+	<goml>
+		<head>
+
+	    <txr id="skyTxr0" src="img_player/space302.jpg"/>
+	    <geo id="skyGeo0" type="Sphere" param="10000 64 64"/>
+	    <mtl id="skyMtl0" type="MeshBasic" param="map: #skyTxr0;"/>
+
+	    <txr id="startTxr" src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACwAAAAAAQABAAACAkQBADs="/>
+	    <txr id="goalTxr" src="data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACwAAAAAAQABAAACAkQBADs="/>
+	    <geo id="earthGeo" type="Sphere" param="50 64 64"/>
+	    <mtl id="earthMtl" type="MeshPhong" param="side: 2; map: #startTxr; color: #ddd; ambient: #666; specular: #ccc; bumpScale: 1.5;"/>
+
+	    <geo id="railGeo" type="Cylinder" param=".1 .1 5 16" />
+	    <mtl id="railMtl" type="MeshPhong" param="color: #ff0; ambient: #660; specular: #dd0;"/>
+
+			<txr id="sunTxr" src="img_player/sun.jpg"/>
+			<mtl id="sunMtl" type="Sprite" param="map: #sunTxr; color: #fff; blending: 2; size: 1;" />
+
+			<geo id="ringGeo0" type="Torus" param="77 10 2 64" />
+			<geo id="ringGeo1" type="Torus" param="95 5 2 64" />
+			<mtl id="ringMtl0" type="MeshLambert" param="color: #deb887; ambient: #666; specular: #ccc;"/>
+			<mtl id="ringMtl1" type="MeshLambert" param="color: #b8860b; ambient: #666; specular: #ccc;"/>
+
+			<rdr frame="#jthree" camera="camera:first" param="preserveDrawingBuffer: false;antialias: true; clearColor: #fff;"/>
+
+		</head>
+		<body>
+			<scene>
+		    <mesh class="sky" geo="#skyGeo0" mtl="#skyMtl0" style="positionY: -10;scaleX: -1;"/>
+
+				<obj id="rails"/>
+
+	      <obj id="corster"/>
+
+	      <mesh id="start" geo="#earthGeo" mtl="#earthMtl"/>
+	      <mesh id="goal" geo="#earthGeo" mtl="#earthMtl" style="mtlMap: #goalTxr;"/>
+				<obj id="ring" style="display: false; rotateX: 1.4;">
+					<mesh geo="#ringGeo0" mtl="#ringMtl0"/>
+					<mesh geo="#ringGeo1" mtl="#ringMtl1"/>
+				</obj>
+
+				<camera style="position: 0 1500 0.1; cameraFov: 45; lookAtY: 0; cameraFar: 30000;"/>
+				<camera id="dammyCam" style="position: 0 10 1; cameraFar: 1000;"/>
+				<light type="Poi" style="positionY: 300; lightColor: #fff; lightDistance: 3000; lightIntensity: 2;">
+					<sprite mtl="#sunMtl" style="scale: 1000;"/>
+				</light>
+				<light type="Amb" style="lightColor: #ccc;" />
+			</scene>
+		</body>
+	</goml>
+	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<!--<script src="libs/jquery.min.js"></script>-->
+	<script src="libs/jThree.min.js"></script>
+  <script src="libs/jThree.Orbit.js"></script>
+  <script src="libs/jThree.MobileVR.js"></script>
+  <script src="libs/jThree.Stereo.js"></script>
+  <script src="libs/THREE.Euler.js"></script>
+  <script src="libs/BSpline.js"></script>
+</body>
+</html>

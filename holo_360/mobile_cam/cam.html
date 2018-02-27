@@ -1,0 +1,71 @@
+<style>
+#app {
+	min-height: 300px;
+}
+</style>
+<input id="test" type="text"/>
+<div id="app"></div>
+
+<script src="libs/getWebCam.js?13"></script>
+<script src="libs/socket.io.js"></script>
+<script src="libs/MSXTransformer.js"></script>
+<script src="libs/Solufa.min.js"></script>
+<script type="text/msx;harmony=true">
+var video = document.createElement( "video" );
+video.autoplay = true;
+var VIDEO_WIDTH = 0;
+var VIDEO_HEIGHT = 0;
+var mobile_size = {
+  width: 0,
+  height: 0
+};
+var isPortrait = true;
+
+video.addEventListener( "play", function() {
+  VIDEO_WIDTH = this.videoWidth;
+  VIDEO_HEIGHT = this.videoHeight;
+  console.log(this.videoWidth, this.videoHeight);
+  document.getElementById( "app" ).style.width = VIDEO_WIDTH + "px";
+  document.getElementById( "app" ).style.height = VIDEO_HEIGHT + "px";
+	m.redraw();
+	document.getElementById( "test" ).value = VIDEO_WIDTH + " " + VIDEO_HEIGHT;
+}, false );
+
+getWebCam( video, 1, function() {} );
+
+var m = S.m;
+m.mount( S.document.body, {
+  controller: function() {
+    var ctrl = {
+      panelGeo: {
+        type: "PlaneBuffer",
+        value: [ 1, 1 ]
+      },
+      panelMtl: {
+        type: "MeshBasic",
+        value: {
+          map: {
+            type: "video",
+            src: video
+          }
+        }
+      }
+    };
+
+    return ctrl;
+  },
+  view: function( ctrl ) {
+    return <scene>
+      <mesh geo={ ctrl.panelGeo } mtl={ ctrl.panelMtl } style={{ posZ: -1, rotateZ: isPortrait ? 0 : Math.PI / 2, scale: [ VIDEO_WIDTH / VIDEO_HEIGHT, 1, 1 ] }}/>
+      <ocam id="cam" height={ isPortrait ? 1 : undefined } width={ isPortrait ? undefined : 1 }/>
+    </scene>;
+  }
+});
+
+function render() {
+  m.render( S.document.head, <rdr init={{ frame: "#app" }}>
+    <vp cam="#cam" />
+  </rdr> );
+}
+render();
+</script>

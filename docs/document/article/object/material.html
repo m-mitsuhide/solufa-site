@@ -1,0 +1,125 @@
+<h1>material</h1>
+
+<h2>LineBasic</h2>
+<pre><code>var lineBasic = {
+  type: "LineBasic",
+  value: {
+    color: colorValue,
+    linewidth: number,
+    linecap: "butt", "round" or "square",
+    linejoin: "round", "bevel" or "miter",
+  }
+};</code></pre>
+
+<h2>LineDashed</h2>
+<pre><code>var lineDashed = {
+  type: "LineDashed",
+  value: {
+    color: colorValue,
+    linewidth: number,
+    scale: number,
+    dashSize: number,
+    gapSize: number
+  }
+};</code></pre>
+
+<h2>MeshBasic</h2>
+<pre><code>var meshBasic = {
+  type: "MeshBasic",
+  value: {
+    color: colorValue,
+    map: <a class="internal" href="?category=object&article=texture">texture</a>,
+    wireframe: boolean,
+    wireframeLinewidth: number,
+    wireframeLinecap: "round", "butt" or "square",
+    wireframeLinejoin: "round", "bevel" or "miter",
+  }
+};</code></pre>
+
+<h2>MeshDepth</h2>
+<pre><code>var meshDepth = {
+  type: "MeshDepth",
+  value: {
+    wireframe: boolean,
+    wireframeLinewidth: number
+  }
+};</code></pre>
+
+<h2>MeshLambert</h2>
+<pre><code>var meshLambert = {
+  type: "MeshLambert",
+  value: {
+    color: colorValue,
+    emissive: colorValue,
+    map: <a class="internal" href="?category=object&article=texture">texture</a>,
+    wireframe: boolean,
+    wireframeLinewidth: number,
+    wireframeLinecap: "round", "butt" or "square",
+    wireframeLinejoin: "round", "bevel" or "miter",
+  }
+};</code></pre>
+
+<h2>MeshNormal</h2>
+<pre><code>var meshNormal = {
+  type: "MeshNormal",
+  value: {
+    wireframe: boolean,
+    wireframeLinewidth: number
+  }
+};</code></pre>
+
+<h2>MeshPhong</h2>
+<pre><code>var meshPhong = {
+  type: "MeshPhong",
+  value: {
+    color: colorValue,
+    specular: colorValue,
+    shininess: number,
+    map: <a class="internal" href="?category=object&article=texture">texture</a>,
+    bumpMap: <a class="internal" href="?category=object&article=texture">texture</a>,
+    bumpMapScale: number,
+    wireframe: boolean,
+    wireframeLinewidth: number,
+    wireframeLinecap: "round", "butt" or "square",
+    wireframeLinejoin: "round", "bevel" or "miter",
+  }
+};</code></pre>
+
+<h2>MeshStandard</h2>
+<pre><code>var meshStandard = {
+  type: "MeshStandard",
+  value: {
+    color: colorValue,
+    emissive: colorValue,
+    roughness: 0-1,
+    metalness: 0-1,
+    map: <a class="internal" href="?category=object&article=texture">texture</a>,
+    bumpMap: <a class="internal" href="?category=object&article=texture">texture</a>,
+    bumpMapScale: number,
+    wireframe: boolean,
+    wireframeLinewidth: number,
+    wireframeLinecap: "round", "butt" or "square",
+    wireframeLinejoin: "round", "bevel" or "miter",
+  }
+};</code></pre>
+
+<h2>Points</h2>
+<pre><code>var points = {
+  type: "Points",
+  value: {
+    color: colorValue,
+    map: <a class="internal" href="?category=object&article=texture">texture</a>,
+    size: number,
+    sizeAttenuation: boolean
+  }
+};</code></pre>
+
+<h2>Sprite</h2>
+<pre><code>var sprite = {
+  type: "Sprite",
+  value: {
+    color: colorValue,
+    map: <a class="internal" href="?category=object&article=texture">texture</a>,
+    rotation: radian
+  }
+};</code></pre>

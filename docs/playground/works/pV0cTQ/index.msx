@@ -1,0 +1,76 @@
+S( function( m ) {
+
+	var App = {
+		vm: {
+			geo: {
+				type: "Box",
+				value: [ 5, 5, 5 ]
+			},
+			mtl: {
+				type: "MeshPhong",
+				value: {
+					color: "#00f",
+					specular: "#999"
+				}
+			},
+			spMtl: {
+				type: "Sprite",
+				value: {
+					map: {
+						type: "image",
+						src: "data:image/png;base64,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"
+					}
+				}
+			},
+			meshPoses: [],
+			lightPos: { pos: [ 1, 10, 10 ] },
+			spStyle: {
+				posY: 3,
+				scale: 10
+			},
+			init: function() {
+				for ( var i = 0; i < 10; i++ ) {
+					for ( var j = 0; j < 10; j++ ) {
+						for ( var k = 0; k < 10; k++ ) {
+							this.meshPoses.push({ pos: [i*10-45,j*10-45,k*10-45] });
+						}
+					}
+				}
+			},
+			rotate: function( elem ) {
+				S.update( function( delta, elapsed ) {
+					elem.style.rotateY += delta * .2;
+					elem.style.rotateX += delta * .2;
+					elem.style.opacity = .2 + .8 * Math.abs( Math.sin( elapsed * .5 ) );
+
+					elem.childNodes[1].style.colorB = Math.abs( Math.sin( elapsed * .5 ) );
+					elem.childNodes[1].style.colorG = Math.abs( Math.cos( elapsed * .5 ) );
+					elem.childNodes[1].style.colorR = 1 - Math.abs( Math.sin( elapsed * .5 ) );
+				});
+			}
+		},
+		controller: function() {
+			App.vm.init();
+		},
+		view: function() {
+			var vm = App.vm;
+
+			return <scene>
+				<obj config={vm.rotate}>
+					{ vm.meshPoses.map( v => <mesh geo={vm.geo} mtl={vm.mtl} style={v}>
+						<sprite mtl={ vm.spMtl } style={vm.spStyle}/>
+					</mesh>)}
+				</obj>
+				<cam id="cam" style={{ posZ: 155 }}/>
+				<light init={{ type: "Dir" }} style={ vm.lightPos }/>
+				<light init={{ type: "Amb" }}/>
+			</scene>;
+		}
+	};
+
+
+	m.mount( S.document.body, App );
+	m.render( S.document.head, <rdr init={{ frame: "#solufa", antialias: true, preserveDrawingBuffer: true }}>
+		<OrbitVp cam="#cam"/>
+	</rdr> );
+});

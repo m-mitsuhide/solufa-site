@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+  #app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #app > iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+
+	<div id="app"></div>
+	<!--<input id="test" type="text" style="width:100%;display:block;position: fixed; top: 40px; left: 10px"/>-->
+
+	<script>
+
+  var app = document.getElementById( "app" );
+  var iframe = null;
+  var html = "";
+  var scripts = "";
+  var value = "";
+
+  function load() {
+    iframe.removeEventListener( "load", load, false );
+    var frame = this.contentDocument;
+    frame.open();
+    frame.write( html.replace( "REPLACE:scripts", scripts ).replace( "REPLACE:value", value ) );
+    frame.close();
+    value = null;
+  }
+
+  var loadCount = 0;
+
+  var xhr = new XMLHttpRequest;
+  xhr.open( "get", "template.html" );
+  xhr.onload = function() {
+    html = this.response;
+    if ( ++loadCount === 2 ) parent.postMessage( JSON.stringify({ loaded: true }), "*" );
+  };
+  xhr.send( null );
+
+  window.addEventListener( "DOMContentLoaded", function() {
+    if ( ++loadCount === 2 ) parent.postMessage( JSON.stringify({ loaded: true }), "*" );
+  }, false );
+
+  window.addEventListener( "message", function( e ) {
+    var json = JSON.parse( e.data );
+
+    if ( json.value ) {
+      value = json.value;
+      scripts = json.scripts.src.map( function( src ) {
+        return '<scr' + 'ipt src="js/' + src + '?' + json.scripts.version + '"></scr' + 'ipt>';
+      }).join( "" );
+
+      iframe && app.removeChild( iframe );
+      iframe = document.createElement( "iframe" );
+      iframe.addEventListener( "load", load, false );
+      iframe.src = "about:blank";
+      app.appendChild( iframe );
+
+    } else if ( json.close ) {
+      iframe && app.removeChild( iframe );
+			iframe = null;
+    } else if ( json.capture ) {
+			parent.postMessage( JSON.stringify({ share: json.share, capture: iframe.contentDocument.getElementById( "solufa" ).querySelector( "canvas" ).toDataURL( "image/jpeg" ) }), "*" );
+		}
+  }, false );
+  </script>
+</body>
+</html>

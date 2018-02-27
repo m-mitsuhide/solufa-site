@@ -1,0 +1,44 @@
+<h1>Component</h1>
+
+<h2>Create</h2>
+<div>
+  <p>
+    <pre><code>var MyComponent = {
+  controller: function( args ) {
+    return {
+      geometry: {
+        type: "Box",
+        value: [ .3, .3, .3 ]
+      },
+      material: {
+        type: "MeshPhong",
+        value: {
+          color: args.color,
+          specular: "#fff"
+        }
+      }
+    };
+  },
+  view: function( ctrl ) {
+    return &lt;mesh geo={ctrl.geometry} mtl={ctrl.material}/&gt;;
+    // JavaScript: return m( "mesh", { geo: ctrl.geometry, mtl: ctrl.material } );
+  }
+};</code></pre>
+  </p>
+</div>
+
+<h2>Use</h2>
+<div>
+  <p>
+    MSX
+    <pre><code>var myColor = "#f00";
+m.render( S.document.body, &lt;scene&gt;
+  &lt;MyComponent color={myColor} /&gt;
+&lt;/scene&gt; );</code></pre>
+    JavaScript
+    <pre><code>var myColor = "#f00";
+m.render( S.document.body, m( "scene", [
+  m( MyComponent, { color: myColor } )
+]) );</code></pre>
+  </p>
+</div>

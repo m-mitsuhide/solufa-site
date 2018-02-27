@@ -1,0 +1,63 @@
+S( function( m ) {
+	
+var App = {
+	vm: {
+			geo: {
+			type: "Buffer",
+			attrs: {
+				position: []
+			}
+		},
+		mtl: {
+			type: "LineBasic",
+			value: {
+				color: "#00f",
+				linewidth: .5
+			}
+		},
+		pMtl: {
+			type: "Points",
+			value: {
+				size: 2,
+				color: "#ff0"
+			}
+		},
+		init: function() {
+			var pos = this.geo.attrs.position;
+
+			for ( var i = 0; i < 500; i++ ) {
+				pos.push( Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100 - 50 );
+			}
+		},
+		rotate: function( elem, isInit ) {
+			if ( isInit ) return;
+
+			S.update( function( delta ) {
+				elem.style.rotateY += delta * .2;
+				elem.style.rotateX += delta * .2;
+			});
+		}
+	},
+	controller: function() {
+		App.vm.init();
+	},
+	view: function() {
+		var vm = App.vm;
+
+		return <scene>
+			<obj config={vm.rotate}>
+				<line geo={vm.geo} mtl={vm.mtl}/>
+				<points geo={vm.geo} mtl={vm.pMtl}/>
+			</obj>
+			<cam id="cam" style={{ posZ: 150 }}/>
+		</scene>;
+	}
+};
+
+
+m.mount( S.document.body, App );
+m.render( S.document.head, <rdr init={{ frame: "#solufa", antialias: true, preserveDrawingBuffer: true }}>
+	<OrbitVp cam="#cam"/>
+</rdr> );
+
+});

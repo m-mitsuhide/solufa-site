@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <script src="../libs/aframe.min.js"></script>
+    <script src="../libs/Stats.min.js"></script>
+    <script src="../libs/timer.js"></script>
+</head>
+<body>
+    <a-scene id="scene">
+      <a-sky color="#fff"></a-sky>
+      <a-entity light="type: ambient; color: #fff"></a-entity>
+      <a-entity light="type: directional; color: #fff; intensity: 2" position="0 0 1"></a-entity>
+    </a-scene>
+<script>
+  // Stats
+  var stats = new Stats();
+  stats.domElement.style.position = "fixed";
+  stats.domElement.style.left    = "5px";
+  stats.domElement.style.top      = "5px";
+  document.body.appendChild(stats.domElement);
+
+  requestAnimationFrame( function update() {
+    requestAnimationFrame( update );
+    stats.update();
+  });
+
+  var fragment = document.createDocumentFragment();
+  var loadedModel = 0;
+
+  timer.start();
+  function loaded() {
+    if ( ++loadedModel === 5 ) {
+      timer.end( "A-FRAME's loaded time:" );
+    }
+  }
+
+  for ( var i = 0; i < 5; i++ ) {
+    var object = document.createElement( "a-entity" );
+    object.addEventListener( "model-loaded", loaded );
+    object.setAttribute( "rotation", "0 -90 0" );
+    object.setAttribute( "position", (i % 10 * 130 - 250) + ' -100 ' + (( i - i % 10 ) * 10 - 200 ) );
+    object.setAttribute( "obj-model", "obj: url(./asset/deadpool/dead 123456.txt); mtl: url(./asset/deadpool/dead_123456.mtl)" );
+    fragment.appendChild( object );
+  }
+
+  document.getElementById( "scene" ).appendChild( fragment );
+</script>
+</body>

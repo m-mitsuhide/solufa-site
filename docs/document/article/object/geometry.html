@@ -1,0 +1,132 @@
+<h1>geometry</h1>
+
+<h2>Buffer</h2>
+<pre><code>var buffer = {
+  type: "Buffer",
+  attrs: {
+    position: [ x0, y0, z0, x1, y1, z1, ... ],
+    index: [ face0_0, face0_1, face0_2, face1_0, face1_1, ... ],
+    uv: [ u0, v0, u1, v1, ... ],
+    needsUpdate: boolean
+  }
+};</code></pre>
+
+<h2>BoxBuffer</h2>
+<pre><code>var boxBuffer = {
+  type: "BoxBuffer",
+  value: [ width, height, depth(, widthSegments, heightSegments, depthSegments ) ]
+};</code></pre>
+
+<h2>Box</h2>
+<pre><code>var box = {
+  type: "Box",
+  value: [ width, height, depth(, widthSegments, heightSegments, depthSegments ) ]
+};</code></pre>
+
+<h2>CircleBuffer</h2>
+<pre><code>var circleBuffer = {
+  type: "CircleBuffer",
+  value: [ radius, segments(, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>Circle</h2>
+<pre><code>var circle = {
+  type: "Circle",
+  value: [ radius, segments(, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>CylinderBuffer</h2>
+<pre><code>var cylinderBuffer = {
+  type: "CylinderBuffer",
+  value: [ radiusTop, radiusBottom, height(, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>Cylinder</h2>
+<pre><code>var cylinder = {
+  type: "Cylinder",
+  value: [ radiusTop, radiusBottom, height(, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>Dodecahedron</h2>
+<pre><code>var dodecahedron = {
+  type: "Dodecahedron",
+  value: [ radius(, detail ) ]
+};</code></pre>
+
+<h2>Icosahedron</h2>
+<pre><code>var icosahedron = {
+  type: "Icosahedron",
+  value: [ radius(, detail ) ]
+};</code></pre>
+
+<h2>Octahedron</h2>
+<pre><code>var octahedron = {
+  type: "Octahedron",
+  value: [ radius(, detail ) ]
+};</code></pre>
+
+<h2>PlaneBuffer</h2>
+<pre><code>var planeBuffer = {
+  type: "PlaneBuffer",
+  value: [ width, height(, widthSegments, heightSegments ) ]
+};</code></pre>
+
+<h2>Plane</h2>
+<pre><code>var plane = {
+  type: "Plane",
+  value: [ width, height(, widthSegments, heightSegments ) ]
+};</code></pre>
+
+<h2>RingBuffer</h2>
+<pre><code>var ringBuffer = {
+  type: "RingBuffer",
+  value: [ innerRadius, outerRadius, thetaSegments(, phiSegments, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>Ring</h2>
+<pre><code>var ring = {
+  type: "Ring",
+  value: [ innerRadius, outerRadius, thetaSegments(, phiSegments, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>SphereBuffer</h2>
+<pre><code>var sphereBuffer = {
+  type: "SphereBuffer",
+  value: [ radius, widthSegments, heightSegments(, phiStart, phiLength, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>Sphere</h2>
+<pre><code>var sphere = {
+  type: "Sphere",
+  value: [ radius, widthSegments, heightSegments(, phiStart, phiLength, thetaStart, thetaLength ) ]
+};</code></pre>
+
+<h2>Tetrahedron</h2>
+<pre><code>var tetrahedron = {
+  type: "Tetrahedron",
+  value: [ radius(, detail ) ]
+};</code></pre>
+
+<h2>TorusBuffer</h2>
+<pre><code>var torusBuffer = {
+  type: "TorusBuffer",
+  value: [ radius, tube(, radialSegments, tubularSegments, arc ) ]
+};</code></pre>
+
+<h2>Torus</h2>
+<pre><code>var torus = {
+  type: "Torus",
+  value: [ radius, tube(, radialSegments, tubularSegments, arc ) ]
+};</code></pre>
+
+<h2>TorusKnotBuffer</h2>
+<pre><code>var torusKnotBuffer = {
+  type: "TorusKnotBuffer",
+  value: [ radius, tube(, tubularSegments, radialSegments, p, q ) ]
+};</code></pre>
+
+<h2>TorusKnot</h2>
+<pre><code>var torusKnot = {
+  type: "TorusKnot",
+  value: [ radius, tube(, tubularSegments, radialSegments, p, q ) ]
+};</code></pre>

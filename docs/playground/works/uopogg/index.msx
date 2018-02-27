@@ -1,0 +1,62 @@
+S( function( m ) {
+
+	var App = {
+		controller: function() {
+			var meshPoses = [];
+			for ( var i = 0; i < 10; i++ ) {
+				for ( var j = 0; j < 10; j++ ) {
+					for ( var k = 0; k < 10; k++ ) {
+						meshPoses.push({ pos: [i*10-45,j*10-45,k*10-45] });
+					}
+				}
+			}
+
+			return {
+				geo: {
+					type: "Box",
+					value: [ 5, 5, 5 ]
+				},
+				mtl: {
+					type: "MeshPhong",
+					value: {
+						color: "#00f",
+						specular: "#999"
+					}
+				},
+				meshPoses: meshPoses,
+				rotate: function( elem, isInit ) {
+					if ( isInit ) return;
+
+					S.update( function( delta, elapsed ) {
+						elem.style.rotateY += delta * .2;
+						elem.style.rotateX += delta * .2;
+						elem.style.opacity = .2 + .8 * Math.abs( Math.sin( elapsed * .5 ) );
+
+						elem.childNodes[ 0 ].style.colorR = Math.abs( Math.sin( elapsed * .5 ) );
+						elem.childNodes[ 0 ].style.colorG = Math.abs( Math.cos( elapsed * .5 ) );
+						elem.childNodes[ 0 ].style.colorB = 1 - Math.abs( Math.sin( elapsed * .5 ) );
+					});
+				},
+				lightStyle: { pos: [ 1, 10, 10 ] }
+			};
+		},
+		view: function( ctrl ) {
+			return <scene>
+				<obj config={ ctrl.rotate }>
+					{ ctrl.meshPoses.map( pos => <mesh geo={ ctrl.geo } mtl={ ctrl.mtl } style={ pos }/>)}
+				</obj>
+				<JyroSync>
+						<cam id="cam"/>
+				</JyroSync>
+				<light init={{ type: "Dir" }} style={ ctrl.lightStyle }/>
+				<light init={{ type: "Amb" }}/>
+			</scene>;
+		}
+	};
+
+
+	m.mount( S.document.body, App );
+	m.render( S.document.head, <rdr init={{ frame: "#solufa", antialias: true, preserveDrawingBuffer: true }}>
+		<StereoVp cam="#cam"/>
+	</rdr> );
+});

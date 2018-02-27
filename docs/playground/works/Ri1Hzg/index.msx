@@ -1,0 +1,67 @@
+S( function( m ) {
+
+	var App = {
+		controller: function() {
+			return {
+				geo: {
+					type: "SphereBuffer",
+					value: [ 5, 64, 64 ]
+				},
+				mtl: {
+					type: "MeshPhong",
+					value: {
+						map: {
+						    type: 'image',
+						    src: 'asset/planets/earth.jpg'
+						},
+						bumpMap: {
+						    type: 'image',
+						    src: 'asset/planets/earth.jpg'
+						},
+						bumpScale: 0.1
+					}
+				},
+				moonMtl: {
+					type: "MeshPhong",
+					value: {
+					    color: '#ffc',
+						map: {
+						    type: 'image',
+						    src: 'asset/planets/moon.jpg'
+						},
+						bumpMap: {
+						    type: 'image',
+						    src: 'asset/planets/moon.jpg'
+						},
+						bumpScale: 0.1
+					}
+				},
+				rotate: function( elem, isInit ) {
+					if ( isInit ) return;
+					console.log(elem);
+
+					S.update( function( delta, elapsed ) {
+						elem.style.posX += delta * .2;
+						elem.style.posY += delta * .2;
+					});
+				}
+			};
+		},
+		view: function( ctrl ) {
+			return <scene>
+			    <mesh geo={ ctrl.geo } mtl={ ctrl.mtl } config={ ctrl.rotate }>
+			        <mesh geo={ ctrl.geo } mtl={ ctrl.moonMtl } style={{ scale: 0.25, posX: -5 }}/>
+			    </mesh>
+				<cam id="cam" style={{ posZ: 35 }}/>
+				<light init={{ type: "Dir" }} style={{ pos: [ 1, 10, 10 ] }}/>
+				<light init={{ type: "Amb" }}/>
+			</scene>;
+		}
+	};
+
+
+	m.mount( S.document.body, App );
+	m.render( S.document.head, <rdr init={{ frame: "#solufa", antialias: true, preserveDrawingBuffer: true }}>
+		<OrbitVp cam="#cam"/>
+	</rdr> );
+});

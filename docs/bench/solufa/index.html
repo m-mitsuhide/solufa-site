@@ -1,0 +1,69 @@
+<script src="../../viewer/js/Solufa.min.js"></script>
+<script src="../libs/Stats.min.js"></script>
+<script src="../../viewer/js/Solufa-OrbitVp.js"></script>
+<script src="../libs/timer.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<style>
+#solufa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+<div id="solufa"></div>
+
+<script>
+S( function( m ) {
+
+	var stats = new Stats();
+  stats.domElement.style.position = "fixed";
+  stats.domElement.style.left    = "5px";
+  stats.domElement.style.top      = "5px";
+  document.body.appendChild(stats.domElement);
+
+  requestAnimationFrame( function update() {
+    requestAnimationFrame( update );
+    stats.update();
+  });
+
+  var App = {
+    controller: function() {
+			return {
+				lightStyle: { pos: [ 1, 10, 10 ] },
+				camStyle: { pos: [ 0, 50, 250 ], lookAt: [ 0, 50, -100 ] },
+				onload: function( e ) {
+					if ( ++this.loadedLength === this.modelLength ) {
+						timer.end( "Solufa's asset loaded time:" );
+					}
+					m.redraw.strategy( "none" );
+				},
+				modelLength:  5,
+				loadedLength: 0,
+				loadStart: function() {
+					timer.start();
+				}
+			};
+    },
+    view: function( ctrl ) {
+
+      return m( "scene", [
+				Array.apply( null, { length: ctrl.modelLength }).map( function( e, i ) {
+					return m( "asset", { src: "./asset/deadpool/asset.json", config: !i ? ctrl.loadStart.bind( ctrl ) : null, onload: ctrl.onload.bind( ctrl ), style: { rotateY: - Math.PI / 2, pos: [ i % 10 * 130 - 250, -50, ( i - i % 10 ) * 10 ] } } );
+				}),
+				m( "cam#cam", { style: ctrl.camStyle } ),
+        m( "light", { init: { type: "Dir", value: [ "#fff", 2 ] }, style: ctrl.lightStyle } ),
+				m( "light", { init: { type: "Amb" }, style: { lightColor: "#fff" }} )
+      ]);
+    }
+  };
+
+
+  m.mount( S.document.body, App );
+  m.render( S.document.head, m( "rdr", { init: { frame: "#solufa", antialias: true, preserveDrawingBuffer: false }, clearColor: "#fff" }, [
+		m( OrbitVp, { cam: "#cam" })
+	]) );
+});
+</script>

@@ -1,0 +1,59 @@
+S( function( m ) {
+
+	var App = {
+		controller: function() {
+			var meshPoses = [];
+			for ( var i = 0; i < 10; i++ ) {
+				for ( var j = 0; j < 10; j++ ) {
+					for ( var k = 0; k < 10; k++ ) {
+						meshPoses.push({ pos: [i*10-45,j*10-45,k*10-45] });
+					}
+				}
+			}
+
+			return {
+				geo: {
+					type: "Box",
+					value: [ 5, 5, 5 ]
+				},
+				mtl: {
+					type: "MeshPhong",
+					value: {
+						color: "#00f",
+						specular: "#999"
+					}
+				},
+				meshPoses: meshPoses,
+				objStyle: { rotateAxis: [ 1, 1, 0 ] },
+				rotate: function( elem, isInit ) {
+					if ( isInit ) return;
+
+					S.update( function( delta, elapsed ) {
+						elem.style.rotateAngle += delta * .2;
+						elem.style.opacity = .2 + .8 * Math.abs( Math.sin( elapsed * .5 ) );
+
+						elem.childNodes[ 0 ].style.colorR = Math.abs( Math.sin( elapsed * .5 ) );
+						elem.childNodes[ 0 ].style.colorG = Math.abs( Math.cos( elapsed * .5 ) );
+						elem.childNodes[ 0 ].style.colorB = 1 - Math.abs( Math.sin( elapsed * .5 ) );
+					});
+				}
+			};
+		},
+		view: function( ctrl ) {
+			return <scene>
+				<obj config={ ctrl.rotate } style={ ctrl.objStyle }>
+					{ ctrl.meshPoses.map( pos => <mesh geo={ ctrl.geo } mtl={ ctrl.mtl } style={ pos }/>)}
+				</obj>
+				<cam id="cam" style={{ posZ: 155 }}/>
+				<light init={{ type: "Dir" }} style={{ pos: [ 1, 10, 10 ] }}/>
+				<light init={{ type: "Amb" }}/>
+			</scene>;
+		}
+	};
+
+
+	m.mount( S.document.body, App );
+	m.render( S.document.head, <rdr init={{ frame: "#solufa", antialias: true, preserveDrawingBuffer: true }}>
+		<OrbitVp cam="#cam"/>
+	</rdr> );
+});

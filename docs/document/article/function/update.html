@@ -1,0 +1,15 @@
+<h1>S.update( callback, isRegisterOption );</h1>
+
+<div>
+  <p>To register or delete a function to be called just before the screen update.</p>
+  <p>
+    <pre><code>var loop = function( delta, elapsed ) {
+  // code
+};
+S.update( loop ); // register callback
+setTimeout( function() {
+  S.update( loop, false ); // delete callback
+}, 10000 );
+</code></pre>
+  </p>
+</div>

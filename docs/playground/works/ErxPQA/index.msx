@@ -1,0 +1,57 @@
+S( function( m ) {
+
+	var App = {
+		controller: function() {
+			var bbb = {
+			    lineGeo: {
+			        type: "Buffer",
+			        attrs: {
+			            position: [ -10, 0, 0, 20, 10, 0 ]
+			        }
+			    },
+			    
+			    lineMtl: {
+			        type: "LineBasic",
+			        value: {
+			            color: "#f00",
+			            linewidth: 100
+			        }
+			    },
+			    
+			    boxGeo: {
+			        type: "Plane",
+			        value: [ 2, 2 ]
+			    },
+			    boxMtl: {
+			        type: "MeshPhong",
+			        value: {
+			            color: "#ff0"
+			        }
+			    },
+			    
+			    boxPosY: 0,
+			    
+			    aaaa: function() {
+			        bbb.boxPosY += 1;
+			    }
+			};
+			
+			return bbb;
+		},
+		view: function( ctrl ) {
+			return <scene>
+				<line geo={ ctrl.lineGeo } mtl={ ctrl.lineMtl }/>
+				<mesh geo={ ctrl.boxGeo } mtl={ ctrl.boxMtl } onclick={ ctrl.aaaa } style={{ posY: ctrl.boxPosY }}/>
+				<cam id="cam" style={{ posZ: 10 }}/>
+				<light init={{ type: "Dir" }} style={{ pos: [ 1, 10, 10 ] }}/>
+				<light init={{ type: "Amb" }}/>
+			</scene>;
+		}
+	};
+
+
+	m.mount( S.document.body, App );
+	m.render( S.document.head, <rdr init={{ frame: "#solufa", antialias: true, preserveDrawingBuffer: true }}>
+		<OrbitVp cam="#cam"/>
+	</rdr> );
+});

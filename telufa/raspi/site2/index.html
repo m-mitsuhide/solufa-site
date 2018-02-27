@@ -1,0 +1,58 @@
+<script src="libs/getWebCam.js?10"></script>
+<script>
+
+function main( i ) {
+
+  var video = document.createElement( "video" );
+  video.autoplay = true;
+
+  video.addEventListener( "play", function() {
+    var input = document.createElement( "input" );
+    input.setAttribute( "type", "text" );
+    input.value = this.videoWidth + " " + this.videoHeight;
+    document.body.appendChild( input );
+
+    var canvas = document.createElement( "canvas" );
+    var ctx = canvas.getContext( "2d" );
+    canvas.width = this.videoWidth;
+    canvas.height = this.videoHeight;
+
+    var n = 0;
+
+    setInterval( function() {
+      ctx.drawImage( video, 0, 0 );
+      var jpg = canvas.toDataURL( "image/jpeg" );
+
+      var bin = atob( jpg.replace(/^.*,/, '') );
+      var buffer = new Uint8Array( bin.length );
+      for (var l = 0; l < bin.length; l++) {
+          buffer[l] = bin.charCodeAt(l);
+      }
+
+      var blob = new Blob([buffer.buffer], {
+          type: 'image/jpeg'
+      });
+
+      var formData = new FormData;
+      formData.append( "img", blob );
+      formData.append( "cam", i );
+      formData.append( "num", n );
+      var request = new XMLHttpRequest();
+      request.open( "POST", "upload.php");
+      request.send( formData );
+
+      n++;
+
+    }, 100 );
+
+  }, false );
+
+  getWebCam( video, i );
+
+}
+
+for ( var i = 0; i < 2; i++ ) {
+  main( i );
+}
+
+</script>

@@ -1,0 +1,394 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
+
+.fb_iframe_widget > span {
+	vertical-align: baseline !important;
+}
+
+.sns > * {
+	margin: 0 10px;
+}
+
+body {
+	font-size: 16px;
+}
+
+.white {
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+	font-weight: bold;
+}
+
+.italic {
+	font-family: Georgia;
+	font-style: italic;
+}
+
+@media ( max-height: 400px ) {
+	body {
+		font-size: 12px;
+	}
+}
+
+@media ( max-width: 600px ) {
+	body {
+		font-size: 12px;
+	}
+	#header {
+		display: none;
+	}
+}
+
+#back {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: center / cover url( img/sol1.jpg );
+}
+
+#back > div {
+	height: 100%;
+	background: rgba( 0, 0, 0, .3 );
+	background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.8) 100%);
+	background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.8) 100%);
+}
+
+#back > div + div {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000;
+}
+
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	background: rgba( 0, 0, 50, .7 );
+}
+
+#header .link {
+	color: #fff;
+	text-decoration: none;
+	padding: 30px;
+	margin: 0 10px;
+	display: inline-block;
+}
+
+#header img {
+	height: 50px;
+  vertical-align: middle;
+  margin: -8px 20px 0;
+}
+
+#top {
+	position: relative;
+	text-align: center;
+}
+
+#main-title {
+	position: absolute;
+	bottom: 47%;
+	width: 100%;
+	font-size: 500%;
+}
+
+#sub-title {
+	position: absolute;
+	top: 54%;
+	width: 100%;
+	font-size: 130%;
+}
+
+#top .mithril {
+	position: absolute;
+	width: 100%;
+	bottom: 20px;
+	text-align: center;
+	font-size: 120%;
+}
+
+.mithril > a {
+	color: #5c5;
+	font-size: 200%;
+	text-decoration: none;
+	font-family: Georgia;
+	font-style: italic;
+	font-weight: bold;
+}
+.mithril > a :before {content:"\25CB";position:absolute;margin:-0.17em 0 0 -0.10em;}
+.mithril > a :after {content:"\25CB";position:absolute;margin:-0.17em 0 0 -0.5em;}
+
+.mithril a > span {
+	font-family:Arial;font-style:normal;
+}
+
+.sns {
+	position: absolute;
+	width: 100%;
+	bottom: 30%;
+}
+
+#features > div {
+	margin: 80px 10%;
+	overflow: hidden;
+}
+
+.feature {
+	padding: 20px;
+	box-sizing: border-box;
+	text-align: center;
+	border: rgba( 50, 50, 90, .7 ) solid 5px;
+	background: rgba( 30, 30, 60, .7 );
+	overflow: hidden;
+	color: #fff;
+}
+
+.feature h2 {
+	font-size: 250%;
+	padding: 10px 0 20px;
+}
+
+.feature h3 {
+	font-size: 135%;
+	padding: 20px 0 10px;
+	font-weight: normal;
+}
+
+.feature .speed {
+	box-sizing: border-box;
+	padding: 0 5px;
+}
+
+.feature table {
+	width: 100%;
+}
+
+.feature td {
+	padding: 5px 0;
+}
+
+.feature tr > :first-child {
+	text-align: right;
+	padding-right: 5px;
+	width: 1%;
+	white-space: nowrap;
+}
+
+.feature .bar {
+	background: yellow;
+	height: 4px;
+	float: left;
+	margin: 0.5em 1em 0 0;
+}
+
+.feature .bar + span {
+	float: left;
+}
+
+.feature tr + tr .bar {
+	background: red;
+}
+
+#scalable p {
+	font-size: 180%;
+	padding: 10px 0;
+	font-weight: bold;
+}
+
+#sample {
+	width: 80%;
+	margin: 80px auto;
+}
+
+#sample > div {
+	position: relative;
+}
+
+#snippet code {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+}
+
+#demo {
+	position: absolute;
+	width: 30%;
+	right: 17px;
+	top: 7.5%;
+}
+
+#demo > div {
+	padding-top: 150%;
+}
+
+
+  .device {
+    position: absolute;
+    width: 65%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(0deg);
+    transition: .3s transform ease; }
+
+  .device.rotation {
+      transform: translate(-50%, -50%) rotateZ(-90deg); }
+  .phone {
+    width: 100%; }
+  .viewer {
+    position: absolute;
+    top: 12.4%;
+    bottom: 12.4%;
+    left: 6.4%;
+    right: 6.2%;
+    background: center;
+    background-size: cover; }
+    .viewer.landscape {
+      top: 29%;
+      bottom: 29%;
+      right: -28%;
+      left: -28%;
+      transform: rotateZ(90deg); }
+
+			.viewer iframe {
+				border: none;
+				width: 100%;
+				height: 100%;
+				background: #fff;
+			}
+
+			.thumbnail {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background: center / cover no-repeat;
+				cursor: pointer;
+			}
+
+			.play {
+				border-radius: 50%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				webkit-transform: translate( -50%, -50% );
+				ms-transform: translate( -50%, -50% );
+				moz-transform: translate( -50%, -50% );
+				transform: translate( -50%, -50% );
+				background: rgba( 34, 34, 51, .5 );
+				width: 80px;
+				height: 80px;
+				border: 3px solid #fff;
+				transition: .3s;
+			}
+
+			.thumbnail:hover > .play {
+				background: #fff;
+				border-color: #223;
+			}
+
+			.arrow {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: 20px;
+				webkit-transform: translate( -50%, -50% ) scaleY( .5 );
+				ms-transform: translate( -50%, -50% ) scaleY( .5 );
+				moz-transform: translate( -50%, -50% ) scaleY( .5 );
+				transform: translate( -50%, -50% ) scaleY( .5 );
+				border: 30px transparent solid;
+				border-left-color: #fff;
+			}
+
+			.thumbnail:hover .arrow {
+				border-left-color: #223;
+			}
+
+#message {
+	font-size: 200%;
+	text-align: center;
+	padding: 120px 0 40px;
+	clear: both;
+}
+
+#usage {
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+}
+
+#playground {
+	width: 100%;
+}
+
+#works {
+	padding-bottom: 10%;
+	overflow: hidden;
+}
+
+#works > a {
+	display: block;
+	width: 20%;
+	padding-top: 20%;
+	background: center / cover no-repeat;
+	float: left;
+	opacity: .9;
+}
+
+#works > a:hover {
+	opacity: 1;
+}
+
+#works > a.down {
+	transform: translateY(50%);
+	-webkit-transform: translateY(50%);
+}
+
+
+#document {
+	text-align: center;
+	border: rgba( 50, 50, 90, .7 ) solid 5px;
+	background: rgba( 30, 30, 60, .7 );
+}
+
+.btn-gr {
+	border: 3px solid #5c5;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: .3s;
+	padding: 5px 20px;
+	text-decoration: none;
+	color: #5c5;
+	display: block;
+	margin-bottom: 30px;
+	font-size: 150%;
+	font-weight: bold;
+	text-align: center;
+	padding: 15px 0;
+}
+
+.btn-gr:hover {
+	color: #fff;
+	background: #5c5;
+}
+
+#footer {
+	clear: both;
+	padding: 50px 0 20px;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+}

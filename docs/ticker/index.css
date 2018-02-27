@@ -1,0 +1,230 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
+
+.fb_iframe_widget > span {
+	vertical-align: baseline !important;
+}
+
+.sns > * {
+	margin: 0 10px;
+}
+
+body {
+	font-size: 16px;
+}
+
+.white {
+	color: #dfd;
+	text-shadow: 0px 0px 20px rgba(0,255,0,1);
+	font-weight: bold;
+}
+
+.italic {
+	font-family: Georgia;
+	font-style: italic;
+}
+
+@media ( max-height: 400px ) {
+	body {
+		font-size: 12px;
+	}
+}
+
+@media ( max-width: 600px ) {
+	body {
+		font-size: 12px;
+	}
+	#header {
+		display: none;
+	}
+	#main-title {
+		font-size: 400%;
+	}
+}
+
+canvas {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -2;
+	background: #000;
+}
+
+#back {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+#back > div {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: #000;
+}
+
+#top {
+	position: relative;
+	text-align: center;
+}
+
+#main-title {
+	position: absolute;
+	bottom: 45%;
+	width: 100%;
+	font-size: 500%;
+	font-family: century;
+}
+
+@media ( max-width: 600px ) {
+	#main-title {
+		font-size: 400%;
+	}
+}
+
+#sub-title {
+	position: absolute;
+	top: 56%;
+	width: 100%;
+	font-size: 130%;
+}
+
+.sns {
+	text-align: center;
+	margin-top: 40px;
+	margin-left: -15px;
+}
+
+#features > div {
+	margin: 80px 10%;
+	overflow: hidden;
+}
+
+.feature {
+	padding: 20px;
+	box-sizing: border-box;
+	text-align: center;
+	border: #afa solid 5px;
+	background: rgba( 30, 30, 30, .7 );
+	overflow: hidden;
+	color: #fff;
+}
+
+.feature h2 {
+	font-size: 250%;
+	padding: 10px 0 25px;
+	font-family: century;
+}
+
+.feature h3 {
+	font-size: 135%;
+	padding: 30px 0 15px;
+	font-weight: normal;
+}
+
+.feature .speed {
+	box-sizing: border-box;
+	padding: 0 5px;
+}
+
+.feature table {
+	width: 100%;
+}
+
+.feature td {
+	padding: 5px 0;
+}
+
+.feature tr > :first-child {
+	text-align: right;
+	padding-right: 5px;
+	width: 1%;
+	white-space: nowrap;
+}
+
+.feature .bar {
+	background: #f00;
+	height: 4px;
+	float: left;
+	margin: 0.5em 1em 0 0;
+}
+
+.feature .bar + span {
+	float: left;
+}
+
+.feature tr + tr .bar {
+	background: #ff0;
+}
+
+.feature tr + tr + tr .bar {
+	background: #0f0;
+}
+
+#drop {
+	margin: 150px 10% 50px;
+}
+
+.dropper {
+  border-radius: 15px;
+  text-align: center;
+  font-size: 300%;
+  border: 5px dashed #afa;
+  height: 150px;
+  position: relative;
+  margin: 5px 0; }
+.dropper.on {
+    color: #0f0;
+    border-color: #0f0; }
+.dropper > span {
+    line-height: 150px; }
+.dropper > input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    opacity: 0;
+    font-size: 0; }
+
+.download {
+	text-decoration: none;
+	color: #232;
+	background: #dfd;
+	border: 1px solid #dfd;
+	border-radius: 5px;
+	box-shadow: 0 0 10px 0 #0f0;
+	padding: 5px 15px;
+	display: block;
+	width: 40%;
+	margin: 0 auto;
+	transition: .3s;
+}
+
+.download:hover {
+	color: #dfd;
+	background: transparent;
+}
+
+#message {
+	font-size: 200%;
+	text-align: center;
+	padding: 80px 0 120px;
+}
+
+#footer {
+	clear: both;
+	padding: 50px 0 20px;
+	text-align: center;
+}

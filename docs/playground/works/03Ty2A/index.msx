@@ -1,0 +1,38 @@
+S( function( m ) {
+	var App = {
+		controller: function() {
+			return {
+				geo: {
+					type: "Box",
+					value: [ 3, 3, 3 ]
+				},
+				mtl: {
+					type: "MeshPhong",
+					value: { specular: "#999" }
+				},
+				color: "#00f",
+				changeColor: function() {
+					this.color = this.color === "#00f" ? "#f00" : "#00f";
+				},
+				camStyle: { pos: [ 0, -5, 8 ] }
+			};
+		},
+		view: function( ctrl ) {
+			return <scene>
+				<mesh geo={ ctrl.geo } mtl={ ctrl.mtl } style={{ color: ctrl.color }}
+				    onclick={ ctrl.changeColor.bind( ctrl )}/>
+				<cam id="mainCam" style={ctrl.camStyle}>
+				    <light init={{ type: "Dir" }} style={{ pos: [0, 10,10 ] }}/>
+				</cam>
+				<light init={{ type: "Amb" }}/>
+			</scene>;
+		}
+	};
+
+	m.mount( S.document.body, App );
+	m.render( S.document.head,
+		<rdr init={{ frame: "#solufa", antialias: true }}>
+			<OrbitVp cam="#mainCam"/>
+		</rdr>
+	);
+});

@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.fb_iframe_widget > span {
+	vertical-align: baseline !important;
+}
+
+.sns > * {
+	margin: 0 10px;
+}
+
+body {
+	font-size: 16px;
+	color: #545454;
+	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+}
+
+.white {
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+	font-weight: bold;
+}
+
+
+@media ( max-height: 400px ) {
+	body {
+		font-size: 12px;
+	}
+}
+
+#root {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+.frame {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	z-index: 10;
+	background: #fff;
+	border-bottom: solid 1px #ccc;
+	padding: 10px 15px 5px;
+	box-sizing: border-box;
+}
+
+#header img {
+	height: 30px;
+}
+
+#header .menuIcon {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	height: 26px;
+	display: none;
+	cursor: pointer;
+}
+
+/*-------- Menu.js ----------*/
+
+#menu {
+	padding: 20px;
+}
+
+#menu .title {
+	font-size: 150%;
+	font-weight: bold;
+}
+
+#menu .list {
+	padding: 8px 8px 8px 24px;
+}
+
+#menu .list > div {
+	padding: 8px 0;
+	color: #666;
+	cursor: pointer;
+}
+
+#menu .list > div:hover {
+	text-decoration: underline;
+	color: #1a0dab;
+}
+
+/*----- article -----*/
+#article {
+	padding: 20px 30px 40px;
+	line-height: 1.6;
+}
+
+#article h1 {
+	margin-bottom: 10px;
+	font-size: 250%;
+}
+
+#article h2 {
+	padding-top: 25px;
+	padding-bottom: 2px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+#article div {
+	padding: 0 15px;
+}
+
+#article pre {
+	margin: 15px 0;
+}
